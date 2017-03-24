@@ -4,10 +4,10 @@ import Vue from 'vue'
 import App from './App'
 
 Vue.config.productionTip = false
-
+window.drag = new Vue();
 /* eslint-disable no-new */
 new Vue({
-  el: '#app',
-  template: '<App/>',
-  components: { App }
+    el: '#app',
+    template: '<App/>',
+    components: {App}
 })

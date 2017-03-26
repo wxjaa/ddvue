@@ -10,7 +10,7 @@
         <headactions></headactions>
     </div>
 </template>
-<script>
+<script type="text/ecmascript-6">
     import headactions from "@/components/headActions"
     export default{
         name: 'header',

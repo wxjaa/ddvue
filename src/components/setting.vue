@@ -8,7 +8,7 @@
     </div>
 
 </template>
-<script>
+<script type="text/ecmascript-6">
     import formsetting from "@/components/formsetting"
     export default{
         name:'setting',

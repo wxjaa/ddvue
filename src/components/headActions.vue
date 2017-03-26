@@ -8,8 +8,10 @@
 <script>
     export default{
         name: "head-actions",
-        data(){
-            return {}
+        data:function(){
+            return {
+              isdisable:true
+            }
         }
     }
 </script>

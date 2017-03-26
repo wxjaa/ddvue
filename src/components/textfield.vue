@@ -9,7 +9,7 @@
 <script>
     export default{
         name: 'textield',
-        data(){
+        data:function(){
             return {
                 offsetTop: 0,
                 offsetLeft: 0

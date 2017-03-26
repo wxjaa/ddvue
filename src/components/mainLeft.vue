@@ -8,7 +8,7 @@
         </div>
     </div>
 </template>
-<script>
+<script type="text/ecmascript-6">
     import textfield from "@/components/textfield"
     export default {
         name: 'mainleft',

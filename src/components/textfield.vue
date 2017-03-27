@@ -9,10 +9,17 @@
 <script>
     export default{
         name: 'textield',
-        data:function(){
+        data: function () {
             return {
                 offsetTop: 0,
-                offsetLeft: 0
+                offsetLeft: 0,
+                componentView: {
+                    name: '单行输入框',
+                    defaultLable: '单行输入框',
+                    defaultProps: '请输入',
+                    componentName: 'textfield',
+                    supportSetting: ['label', 'placeholder', 'required', 'important', 'print']
+                }
             }
         },
         methods: {
@@ -36,6 +43,7 @@
                 obj.clientX = e.clientX
                 obj.clientY = e.clientY
                 obj.isstart = true
+                obj.componentView = this.componentView
                 drag.$emit("movestart", obj)
             }
         }

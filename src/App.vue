@@ -1,5 +1,5 @@
 <template>
-  <div id="app" class="wf-wrapper" v-on:mouseup="moveend" v-on:mousedown="movestart" v-on:mousemove="move">
+  <div id="app" class="wf-wrapper" v-on:mouseup="moveend" v-on:mousemove="move">
     <Header></Header>
     <div class="wf-main">
       <mainleft></mainleft>
@@ -28,25 +28,38 @@
     },
     data: function () {
       return {
-        isstart: false
+        isstart: false,
+        componentView: {}
       }
     },
     methods: {
       move: function (e) {
-        if(this.isstart) {
+        if (this.isstart) {
           document.querySelector('html').classList.add('wf-cursor-move')
           drag.$emit("moveInCanvas", e)
           drag.$emit('move', e)
         }
       },
-      movestart: function (e) {
-        this.isstart = true
-      },
       moveend: function (e) {
-        this.isstart = false
-        drag.$emit("moveend", e)
+        if (this.isstart) {
+          let obj = {
+            componentView: this.componentView
+          }
+          drag.$emit("moveend", obj)
+          this.isstart = false
+        }
       }
     },
+    created: function () {
+      let self = this
+      drag.$on('movestart', function (obj) {
+        self.isstart = true
+        self.componentView = obj.componentView
+      })
+    },
+    mounted: function () {
+
+    }
   }
 </script>
 <style>
@@ -54,7 +67,6 @@
 </style>
 <style>
   #app {
-    font-family: 'Avenir', Helvetica, Arial, sans-serif;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
   }

@@ -4,13 +4,16 @@
     <div class="wf-formcanvas-inner">
       <div class="wf-formcanvas-body dropbody" v-bind:class="{empty:isempty}">
         <div class="wf-dragging-mark" v-if="InCanvas"></div>
-        <div class="wf-component wf-component-textfield active" >
-          <div class="wf-remove icon icon-close" ></div>
-          <div class="wf-overlay" ></div>
-          <div class="wf-componentview" >
-            <div class="wf-componentview-border" ><label
-              class="wf-componentview-label" >单行输入框</label><span
-              class="wf-componentview-placeholder">请输入</span></div>
+
+        <div v-for="(item,index) in components" :data-index="index"
+             v-bind:class="index==selected?'active':''"
+             class="wf-component wf-component-textfield">
+          <div class="wf-remove icon icon-close"></div>
+          <div class="wf-overlay"></div>
+          <div class="wf-componentview">
+            <div class="wf-componentview-border"><label
+              class="wf-componentview-label">{{item.defaultLable}}</label><span
+              class="wf-componentview-placeholder">{{item.defaultProps}}</span></div>
           </div>
         </div>
       </div>
@@ -28,7 +31,9 @@
         top: 0,
         width: 0,
         height: 0,
-        InCanvas: false
+        InCanvas: false,
+        components: [],
+        selected: 0
       }
     },
     created: function () {
@@ -42,7 +47,14 @@
       })
       drag.$on("moveend", function (obj) {
         if (self.InCanvas) {
-
+          self.components.push(obj.componentView)
+            drag.$emit('changeTab',true)
+        }
+        self.InCanvas = false
+        if(self.components.length<=0){
+          self.isempty=true
+        }else{
+          self.isempty=false
         }
       })
     },
@@ -66,7 +78,6 @@
       this.height = dom.offsetHeight
     },
     updated: function () {
-
     }
   }
 </script>

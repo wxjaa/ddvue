@@ -1,5 +1,5 @@
 <template>
-    <div class="wf-widgetsitem" data-type="textfield" v-on:mousedown="start">
+    <div class="wf-widgetsitem"  data-type="textfield" v-on:mousedown="start">
         <label>
             单行输入框
         </label>

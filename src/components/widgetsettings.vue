@@ -1,12 +1,12 @@
 <template>
     <div class="wf-form wf-widgetsettings">
-        <div class="wf-field wf-setting-label">
+        <div v-if="supportSetting.supportSetting" class="wf-field wf-setting-label">
             <div class="fieldname">
                 <span>标题</span>
                 <span class="fieldinfo">最多10个字</span>
             </div>
             <div class="fieldblock">
-                <input type="text" value="数字输入框">
+                <input type="text" v-model="supportSetting.defaultLable">
             </div>
         </div>
         <div class="wf-field wf-setting-placeholder">
@@ -85,17 +85,26 @@
     export default{
         data: function () {
             return {
-                options: 3
+                options: 3,
+                supportSetting: {}
             }
         },
-        methods:{
-              add: function (e) {
-                  console.log(123123)
-                  this.options++
-              },
+        methods: {
+            add: function (e) {
+                this.options++
+            },
             del: function () {
                 this.options--;
             }
+        },
+        created: function () {
+            let self = this
+            drag.$on("selectComponent", function (obj) {
+                for (let i = 0; i < obj.supportSetting.length; i++) {
+                    self.supportSetting[obj.supportSetting[i]] = true
+                }
+                self.supportSetting = Object.assign({}, self.supportSetting, obj)
+            })
         }
 
     }

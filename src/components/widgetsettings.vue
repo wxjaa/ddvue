@@ -101,7 +101,6 @@
         },
         methods: {
             changeComponent: function () {
-                console.log(this.supportSetting)
                 drag.$emit("changeComponent",this.supportSetting);
             }
         },

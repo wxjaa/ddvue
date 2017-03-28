@@ -1,5 +1,5 @@
 <template>
-    <div class="wf-widgetsitem"  data-type="textfield" v-on:mousedown="start">
+    <div class="wf-widgetsitem" data-type="textfield" v-on:mousedown="start">
         <label>
             单行输入框
         </label>
@@ -17,6 +17,7 @@
                     name: '单行输入框',
                     defaultLable: '单行输入框',
                     defaultProps: '请输入',
+                    defaultImportant: false,
                     componentName: 'textfield',
                     supportSetting: ['label', 'placeholder', 'required', 'important', 'print']
                 }

@@ -6,8 +6,8 @@
             <a href="javascript:;" @click="clickTab" data-tabname="form" class="tabitem "
                v-bind:class="[component?'':'current']">审批设置</a>
         </div>
-        <formsetting v-if="!component"></formsetting>
-        <widgetsettings v-if="component"></widgetsettings>
+        <formsetting v-show="!component"></formsetting>
+        <widgetsettings v-show="component"></widgetsettings>
     </div>
 
 </template>
@@ -39,6 +39,10 @@
             drag.$on("changeTab", function (bool) {
                 self.component = bool
             })
+           /* drag.$on("selectComponent", function (obj) {
+                self.supportSetting = Object.assign({}, self.supportSetting, obj)
+                console.log(self.supportSetting)
+            })*/
         }
     }
 </script>

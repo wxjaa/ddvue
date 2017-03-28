@@ -46,7 +46,8 @@
                     transform: 'translate3d(' + moveX + ',' + moveY + ',0)'
                 })
             })
-            drag.$on('moveend', function (obj) {
+            drag.$on('dragend', function (obj) {
+                console.log(1111111);
                 self.isstart = false
                 let startX = self.cc.left;
                 let startY = self.cc.top;

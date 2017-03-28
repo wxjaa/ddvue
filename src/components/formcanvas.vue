@@ -5,7 +5,8 @@
             <div class="wf-formcanvas-body dropbody" v-bind:class="{empty:isempty}">
                 <div class="wf-dragging-mark" v-if="InCanvas"></div>
 
-                <div v-for="(item,index) in components" v-on:mouseout="mouseOut" v-on:mouseover="hover"
+                <div v-for="(item,index) in components" @click="clickComponent" v-on:mouseout="mouseOut"
+                     v-on:mouseover="hover"
                      v-if="item.componentName=='textfield'" :data-index="index"
                      v-bind:class="index==selected?'active':''"
                      class="wf-component wf-component-textfield">
@@ -14,10 +15,11 @@
                     <div class="wf-componentview">
                         <div class="wf-componentview-border"><label
                             class="wf-componentview-label">{{item.defaultLable}}</label><span
-                            class="wf-componentview-placeholder">{{item.defaultProps}}</span></div>
+                            class="wf-componentview-placeholder">{{item.defaultProps}}<span v-if="item.defaultImportant">（必填）</span></span></div>
                     </div>
                 </div>
-                <div v-for="(item,index) in components" v-on:mouseout="mouseOut" v-on:mouseover="hover"
+                <div v-for="(item,index) in components" @click="clickComponent" v-on:mouseout="mouseOut"
+                     v-on:mouseover="hover"
                      v-if="item.componentName=='textareafield'" :data-index="index"
                      v-bind:class="index==selected?'active':''"
                      class="wf-component wf-component-textareafield">
@@ -29,7 +31,8 @@
                             class="wf-componentview-placeholder">{{item.defaultProps}}</span></div>
                     </div>
                 </div>
-                <div v-for="(item,index) in components" v-on:mouseout="mouseOut" v-on:mouseover="hover"
+                <div v-for="(item,index) in components" @click="clickComponent" v-on:mouseout="mouseOut"
+                     v-on:mouseover="hover"
                      v-if="item.componentName=='numberfield'" :data-index="index"
                      v-bind:class="index==selected?'active':''"
                      class="wf-component wf-component-numberfield">
@@ -41,7 +44,8 @@
                             class="wf-componentview-placeholder">{{item.defaultProps}}</span></div>
                     </div>
                 </div>
-                <div v-for="(item,index) in components" v-on:mouseout="mouseOut" v-on:mouseover="hover"
+                <div v-for="(item,index) in components" @click="clickComponent" v-on:mouseout="mouseOut"
+                     v-on:mouseover="hover"
                      v-if="item.componentName=='ddselectfield'" :data-index="index"
                      v-bind:class="index==selected?'active':''"
                      class="wf-component wf-component-ddselectfield">
@@ -55,7 +59,8 @@
                         </div>
                     </div>
                 </div>
-                <div v-for="(item,index) in components" v-on:mouseout="mouseOut" v-on:mouseover="hover"
+                <div v-for="(item,index) in components" @click="clickComponent" v-on:mouseout="mouseOut"
+                     v-on:mouseover="hover"
                      v-if="item.componentName=='ddmultiselectfield'" :data-index="index"
                      v-bind:class="index==selected?'active':''"
                      class="wf-component wf-component-ddmultiselectfield">
@@ -69,7 +74,8 @@
                         </div>
                     </div>
                 </div>
-                <div v-for="(item,index) in components" v-on:mouseout="mouseOut" v-on:mouseover="hover"
+                <div v-for="(item,index) in components" @click="clickComponent" v-on:mouseout="mouseOut"
+                     v-on:mouseover="hover"
                      v-if="item.componentName=='dddatefield'" :data-index="index"
                      v-bind:class="index==selected?'active':''"
                      class="wf-component wf-component-dddatefield">
@@ -83,7 +89,8 @@
                         </div>
                     </div>
                 </div>
-                <div v-for="(item,index) in components" v-on:mouseout="mouseOut" v-on:mouseover="hover"
+                <div v-for="(item,index) in components" @click="clickComponent" v-on:mouseout="mouseOut"
+                     v-on:mouseover="hover"
                      v-if="item.componentName=='dddaterangefield'" :data-index="index"
                      v-bind:class="index==selected?'active':''"
                      class="wf-component wf-component-dddaterangefield">
@@ -98,7 +105,8 @@
                         <span></span>
                     </div>
                 </div>
-                <div v-for="(item,index) in components" v-on:mouseout="mouseOut" v-on:mouseover="hover"
+                <div v-for="(item,index) in components" @click="clickComponent" v-on:mouseout="mouseOut"
+                     v-on:mouseover="hover"
                      v-if="item.componentName=='ddphotofield'" :data-index="index"
                      v-bind:class="index==selected?'active':''"
                      class="wf-component wf-component-ddphotofield">
@@ -112,7 +120,8 @@
                         </div>
                     </div>
                 </div>
-                <div v-for="(item,index) in components" v-on:mouseout="mouseOut" v-on:mouseover="hover"
+                <div v-for="(item,index) in components" @click="clickComponent" v-on:mouseout="mouseOut"
+                     v-on:mouseover="hover"
                      v-if="item.componentName=='tablefield'" :data-index="index"
                      v-bind:class="index==selected?'active':''"
                      class="wf-component wf-component-tablefield">
@@ -128,7 +137,8 @@
                         </div>
                     </div>
                 </div>
-                <div v-for="(item,index) in components" v-on:mouseout="mouseOut" v-on:mouseover="hover"
+                <div v-for="(item,index) in components" @click="clickComponent" v-on:mouseout="mouseOut"
+                     v-on:mouseover="hover"
                      v-if="item.componentName=='textnote'" :data-index="index"
                      v-bind:class="index==selected?'active':''"
                      class="wf-component wf-component-textnote">
@@ -140,7 +150,8 @@
                         </div>
                     </div>
                 </div>
-                <div v-for="(item,index) in components" v-on:mouseout="mouseOut" v-on:mouseover="hover"
+                <div v-for="(item,index) in components" @click="clickComponent" v-on:mouseout="mouseOut"
+                     v-on:mouseover="hover"
                      v-if="item.componentName=='moneyfield'" :data-index="index"
                      v-bind:class="index==selected?'active':''"
                      class="wf-component wf-component-moneyfield">
@@ -154,7 +165,8 @@
                         <div class="cnformat">大写：壹万元整（示例）</div>
                     </div>
                 </div>
-                <div v-for="(item,index) in components" v-on:mouseout="mouseOut" v-on:mouseover="hover"
+                <div v-for="(item,index) in components" @click="clickComponent" v-on:mouseout="mouseOut"
+                     v-on:mouseover="hover"
                      v-if="item.componentName=='ddattachment'" :data-index="index"
                      v-bind:class="index==selected?'active':''"
                      class="wf-component wf-component-ddattachment">
@@ -168,7 +180,8 @@
                         <i class="icon icon-chakanfujian"></i>
                     </div>
                 </div>
-                <div v-for="(item,index) in components" v-on:mouseout="mouseOut" v-on:mouseover="hover"
+                <div v-for="(item,index) in components" @click="clickComponent" v-on:mouseout="mouseOut"
+                     v-on:mouseover="hover"
                      v-if="item.componentName=='externalcontactfield'" :data-index="index"
                      v-bind:class="index==selected?'active':''"
                      class="wf-component wf-component-externalcontactfield">
@@ -199,7 +212,7 @@
                 height: 0,
                 InCanvas: false,
                 components: [],
-                selected: 0,
+                selected: null,
                 InTableCanvas: false
             }
         },
@@ -211,12 +224,27 @@
                 e.currentTarget.classList.remove('hover')
             },
             close: function (e) {
+                e.preventDefault();
+                e.stopPropagation();
                 let dom = e.currentTarget.parentNode;
                 let index = dom.getAttribute('data-index');
                 this.components.splice(index, 1)
-                drag.$emit("changeTab", false)
+                if (dom.className.indexOf('active') > 0) {
+                    drag.$emit("changeTab", false)
+                    this.selected = null;
+                }
                 if (this.components.length <= 0) {
                     this.isempty = true
+                }
+            },
+            clickComponent: function (e) {
+                let dom = e.currentTarget;
+                let index = dom.getAttribute('data-index');
+                let obj = this.components[index]
+                if (this.selected !== index) {
+                    this.selected = index
+                    drag.$emit("selectComponent", obj)
+                    drag.$emit('changeTab', true)
                 }
             }
         },
@@ -230,17 +258,42 @@
                 }
             })
             drag.$on("moveend", function (obj) {
+                let component = JSON.stringify(obj);
+                component = JSON.parse(component);
+                drag.$emit("dragend", obj);
                 if (self.InCanvas) {
-                    self.components.push(obj.componentView)
-                    self.selected = self.components.indexOf(obj.componentView);
+                    let idx = 0;
+                    for (let i = 0; i < self.components.length; i++) {
+                        let item = self.components[i]
+                        if (item.name == component.componentView.name) {
+                            idx++;
+                        }
+                    }
+                    component.componentView.idx = self.components.length;
+                    if (idx > 0) {
+                        component.componentView.defaultLable = component.componentView.defaultLable + "（" + idx + "）";
+                    }
+                    self.components.push(component.componentView)
+                    self.selected = self.components.indexOf(component.componentView);
                     drag.$emit('changeTab', true)
-                    drag.$emit("selectComponent", obj)
+                    drag.$emit("selectComponent", component.componentView)
                 }
+
                 self.InCanvas = false
                 if (self.components.length <= 0) {
                     self.isempty = true
                 } else {
                     self.isempty = false
+                }
+            })
+            drag.$on("changeComponent", function (obj) {
+
+                for (let i = 0; i < self.components.length; i++) {
+                    let item = self.components[i];
+                    if (item.idx == obj.idx) {
+                        self.components.splice(i, 1, obj)
+
+                    }
                 }
             })
         },

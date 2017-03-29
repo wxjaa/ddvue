@@ -1,25 +1,40 @@
 <template>
-    <div class="wf-widgetsitem" data-type="textareafield" v-on:mousedown="start">
+    <div class="wf-widgetsitem" data-type="dddaterangefield" v-on:mousedown="start">
         <label>
-            多行输入框
+            日期区间
         </label>
-        <i class="widgeticon textareafield"></i>
+        <i class="widgeticon dddaterangefield"></i>
     </div>
 </template>
 <script>
     export default{
-        name: 'textareafield',
+        name: 'dddaterangefield',
         data: function () {
             return {
                 offsetTop: 0,
                 offsetLeft: 0,
                 componentView: {
-                    name: '多行输入框',
-                    defaultLable: '多行输入框',
-                    defaultProps: '请输入',
+                    name: '日期区间',
+                    defaultLable: '开始时间',
+                    defaultLable2: '结束时间',
+                    defaultProps: '请选择',
+                    defaultProps2: '请选择',
                     defaultImportant: false,
-                    componentName: 'textareafield',
-                    supportSetting: ['label', 'placeholder', 'required', 'important', 'print']
+                    defaultAutorekonTime: false,
+                    defaultFormat: 'yyyy-MM-dd',
+                    defaultSubtitle:'时长',
+                    componentName: 'dddaterangefield',
+                    supportSetting: [
+                        'label',
+                        'label2',
+                        'placeholder',
+                        'placeholder2',
+                        'dateformat',
+                        'required',
+                        'important',
+                        'autorekonTime',
+                        'subtitle',
+                        'print']
                 }
             }
         },

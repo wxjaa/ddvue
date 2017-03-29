@@ -1,25 +1,26 @@
 <template>
-    <div class="wf-widgetsitem" data-type="textareafield" v-on:mousedown="start">
+    <div class="wf-widgetsitem" data-type="dddatefield" v-on:mousedown="start">
         <label>
-            多行输入框
+            日期
         </label>
-        <i class="widgeticon textareafield"></i>
+        <i class="widgeticon dddatefield"></i>
     </div>
 </template>
 <script>
     export default{
-        name: 'textareafield',
+        name: 'dddatefield',
         data: function () {
             return {
                 offsetTop: 0,
                 offsetLeft: 0,
                 componentView: {
-                    name: '多行输入框',
-                    defaultLable: '多行输入框',
-                    defaultProps: '请输入',
+                    name: '日期',
+                    defaultLable: '日期',
+                    defaultProps: '请选择',
                     defaultImportant: false,
-                    componentName: 'textareafield',
-                    supportSetting: ['label', 'placeholder', 'required', 'important', 'print']
+                    defaultFormat: 'yyyy-MM-dd',
+                    componentName: 'dddatefield',
+                    supportSetting: ['label', 'placeholder', 'dateformat','required', 'important', 'print']
                 }
             }
         },

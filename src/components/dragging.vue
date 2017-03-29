@@ -47,7 +47,6 @@
                 })
             })
             drag.$on('dragend', function (obj) {
-                console.log(1111111);
                 self.isstart = false
                 let startX = self.cc.left;
                 let startY = self.cc.top;

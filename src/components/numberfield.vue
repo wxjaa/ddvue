@@ -1,25 +1,25 @@
 <template>
-    <div class="wf-widgetsitem" data-type="textareafield" v-on:mousedown="start">
+    <div class="wf-widgetsitem" data-type="numberfield" v-on:mousedown="start">
         <label>
-            多行输入框
+            数字输入框
         </label>
-        <i class="widgeticon textareafield"></i>
+        <i class="widgeticon numberfield"></i>
     </div>
 </template>
 <script>
     export default{
-        name: 'textareafield',
+        name: 'numberfield',
         data: function () {
             return {
                 offsetTop: 0,
                 offsetLeft: 0,
                 componentView: {
-                    name: '多行输入框',
-                    defaultLable: '多行输入框',
+                    name: '数字输入框',
+                    defaultLable: '数字输入框',
                     defaultProps: '请输入',
                     defaultImportant: false,
-                    componentName: 'textareafield',
-                    supportSetting: ['label', 'placeholder', 'required', 'important', 'print']
+                    componentName: 'numberfield',
+                    supportSetting: ['label', 'placeholder', 'required', 'important', 'print','uint']
                 }
             }
         },

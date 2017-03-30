@@ -82,8 +82,10 @@ video {
   outline: 0;
   font-size: 100%;
   vertical-align: baseline;
-  -webkit-user-select:none;
-  -moz-user-select:none
+    -webkit-user-select: none; /* Chrome, Opera, Safari */
+    -moz-user-select: none; /* Firefox 2+ */
+    -ms-user-select: none; /* IE 10+ */
+    user-select: none; /* Standard syntax */
 }
 *,
 *:before,

@@ -179,13 +179,16 @@
                              class="wf-component wf-component-tablefield">
                             <div class="wf-remove icon icon-close" @click="close"></div>
                             <div class="wf-overlay"></div>
-                            <div class="wf-componentview-area" v-bind:class="{empty:item.components.length<=0}">
-                                <span class="emptytip" v-if="item.components.length<=0">可拖入多个组件（不包含明细组件）</span>
-                                <div class="wf-componentgroup dropbody">
-                                    <div class="wf-dragging-mark" v-if="InTableCanvas"></div>
+                            <div class="wf-componentview">
+                                <label class="wf-componentview-label">明细</label>
+                                <div class="wf-componentview-area" v-bind:class="{empty:item.components.length<=0}">
+                                    <span class="emptytip" v-if="item.components.length<=0">可拖入多个组件（不包含明细组件）</span>
+                                    <div class="wf-componentgroup dropbody">
+                                        <div class="wf-dragging-mark" v-if="InTableCanvas"></div>
+                                    </div>
                                 </div>
                                 <div class="wf-componentview-adddetail">
-                                    {{item.defaultProps}}
+                                    {{item.defaultAction}}
                                 </div>
                             </div>
                         </div>
@@ -224,7 +227,7 @@
                                     class="wf-componentview-placeholder">{{item.defaultProps}}<span
                                     v-if="item.defaultImportant">（必填）</span></span>
                                 </div>
-                                <div class="cnformat">大写：壹万元整（示例）</div>
+                                <div class="cnformat" v-if="item.defaultTranslate">大写：壹万元整（示例）</div>
                             </div>
                         </div>
                         <div class="wf-dragging-mark" v-if="InCanvas==index+1"></div>
@@ -293,7 +296,8 @@
                 InTableCanvas: false,
                 domArr: [],
                 isDrag: false,
-                dragIndex: null
+                dragIndex: null,
+                InTabCanvas: false
             }
         },
         /* components: {

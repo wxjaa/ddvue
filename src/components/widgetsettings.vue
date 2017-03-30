@@ -18,6 +18,26 @@
                 <input type="text" @input="changeComponent" maxlength="10" v-model="supportSetting.defaultLable2">
             </div>
         </div>
+        <div v-if="supportSetting.action" class="wf-field wf-setting-label">
+            <div class="fieldname">
+                <span>动作名称</span>
+                <span class="fieldinfo">最多10个字</span>
+            </div>
+            <div class="fieldblock">
+                <input type="text" @input="changeComponent" maxlength="10" v-model="supportSetting.defaultAction">
+            </div>
+        </div>
+        <div v-if="supportSetting.textnote" class="wf-field wf-setting-content">
+            <div class="fieldname">
+                <span>说明文字</span>
+                <span class="fieldinfo">最多5000个字</span>
+            </div>
+            <div class="fieldblock">
+                <textarea type="text" @input="changeComponent" maxlength="5000" v-model="supportSetting.defaultProps">
+                    请输入说明文字
+                </textarea>
+            </div>
+        </div>
         <div v-if="supportSetting.placeholder" class="wf-field wf-setting-placeholder">
             <div class="fieldname">
                 <span>提示文字</span>
@@ -34,6 +54,15 @@
             </div>
             <div class="fieldblock">
                 <input type="text" @input="changeComponent" maxlength="20" v-model="supportSetting.defaultProps2">
+            </div>
+        </div>
+        <div v-if="supportSetting.href" class="wf-field wf-setting-display">
+            <div class="fieldname">
+                <span>可以输入链接跳转地址</span>
+            </div>
+            <div class="fieldblock">
+                <textarea type="text" @input="changeComponent"  v-model="supportSetting.defaultHref">
+                </textarea>
             </div>
         </div>
         <div v-if="supportSetting.dateformat" class="wf-field wf-setting-placeholder">
@@ -85,6 +114,15 @@
                 <input type="checkbox" @change="changeComponent" value="1"
                        v-model="supportSetting.defaultImportant">
                 <span class="verticalmiddle">必填</span>
+            </label>
+        </div>
+        <div v-if="supportSetting.translate" class="wf-field wf-setting-conformat">
+            <div class="fieldname">大写</div>
+            <label class="fieldblock">
+                <input type="checkbox" @change="changeComponent" value="1"
+                       v-model="supportSetting.defaultTranslate">
+                <span class="verticalmiddle">显示大写</span>
+                <span class="verticalmiddle fieldinfo">（数字输入后自动显示大写）</span>
             </label>
         </div>
         <div v-if="supportSetting.autorekonTime" class="wf-field-group">

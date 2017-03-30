@@ -18,13 +18,6 @@
     </div>
 </template>
 <script type="text/ecmascript-6">
-    import textfield from "@/components/textfield"
-    import textareafield from "@/components/textareafield"
-    import numberfield from "@/components/numberfield"
-    import ddselectfield from "@/components/ddselectfield"
-    import ddmultiselectfield from "@/components/ddmultiselectfield"
-    import dddatefield from "@/components/dddatefield"
-    import dddaterangefield from "@/components/dddaterangefield"
     export default {
         name: 'mainleft',
         data(){
@@ -125,6 +118,8 @@
                         defaultLable: '明细',
                         defaultAction: '增加明细',
                         components: [],
+                        selected:null,
+                        InTableCanvas:null,
                         componentName: 'tablefield',
                         supportSetting: ['label', 'action', 'required']
                     },

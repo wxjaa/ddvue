@@ -218,13 +218,11 @@
         created: function () {
             let self = this
             drag.$on("selectComponent", function (obj) {
-                console.log(obj)
                 self.supportSetting = {}
                 for (let i = 0; i < obj.supportSetting.length; i++) {
                     self.supportSetting[obj.supportSetting[i]] = true
                 }
                 self.supportSetting = Object.assign({}, self.supportSetting, obj)
-                console.log(self.supportSetting)
             })
         },
         updated: function () {

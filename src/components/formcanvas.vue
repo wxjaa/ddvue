@@ -63,6 +63,7 @@
                     <div v-if="item.componentName=='ddselectfield'">
                         <div @mousedown="mouseDown" draggable="true" v-on:dragstart="movestart"
                              v-on:mouseover="hover"
+                             v-on:mouseout="mouseOut"
                              :data-index="index"
                              v-bind:class="index==selected?'active':''"
                              class="wf-component wf-component-ddselectfield">
@@ -184,7 +185,255 @@
                                 <div class="wf-componentview-area" v-bind:class="{empty:item.components.length<=0}">
                                     <span class="emptytip" v-if="item.components.length<=0">可拖入多个组件（不包含明细组件）</span>
                                     <div class="wf-componentgroup dropbody">
-                                        <div class="wf-dragging-mark" v-if="InTableCanvas"></div>
+                                        <div class="wf-dragging-mark" v-if="item.InTableCanvas==0"></div>
+                                        <div v-for="(itemInTable,idx) in item.components">
+                                            <div v-if="itemInTable.componentName=='textareafield'">
+                                                <div @mousedown="mouseDown" draggable="true" v-on:dragstart="movestart"
+                                                     v-on:mouseout="mouseOut"
+                                                     v-on:mouseover="hover"
+                                                     :data-index="idx"
+                                                     v-bind:class="idx==item.selected?'active':''"
+                                                     class="wf-component wf-component-textareafield">
+                                                    <div class="wf-remove icon icon-close" @click="close"></div>
+                                                    <div class="wf-overlay"></div>
+                                                    <div class="wf-componentview">
+                                                        <div class="wf-componentview-border"><label
+                                                            class="wf-componentview-label">{{itemInTable.defaultLable}}</label><span
+                                                            class="wf-componentview-placeholder">{{itemInTable.defaultProps}}<span
+                                                            v-if="item.defaultImportant">（必填）</span></span></div>
+                                                    </div>
+                                                </div>
+                                                <div class="wf-dragging-mark" v-if="item.InTableCanvas==idx+1"></div>
+                                            </div>
+                                            <div v-if="itemInTable.componentName=='textfield'">
+                                                <div @mousedown="mouseDown" draggable="true" v-on:dragstart="movestart"
+                                                     v-on:mouseout="mouseOut"
+                                                     v-on:mouseover="hover"
+                                                     :data-index="idx"
+                                                     v-bind:class="idx==item.selected?'active':''"
+                                                     class="wf-component wf-component-textfield">
+                                                    <div class="wf-remove icon icon-close" @click="close"></div>
+                                                    <div class="wf-overlay"></div>
+                                                    <div class="wf-componentview">
+                                                        <div class="wf-componentview-border"><label
+                                                            class="wf-componentview-label">{{itemInTable.defaultLable}}</label><span
+                                                            class="wf-componentview-placeholder">{{itemInTable.defaultProps}}<span
+                                                            v-if="itemInTable.defaultImportant">（必填）</span></span></div>
+                                                    </div>
+                                                </div>
+                                                <div class="wf-dragging-mark" v-if="item.InTableCanvas==idx+1"></div>
+                                            </div>
+                                            <div v-if="itemInTable.componentName=='numberfield'">
+                                                <div @mousedown="mouseDown" draggable="true" v-on:dragstart="movestart"
+                                                     v-on:mouseout="mouseOut"
+                                                     v-on:mouseover="hover"
+                                                     :data-index="idx"
+                                                     v-bind:class="idx==item.selected?'active':''"
+                                                     class="wf-component wf-component-numberfield">
+                                                    <div class="wf-remove icon icon-close" @click="close"></div>
+                                                    <div class="wf-overlay"></div>
+                                                    <div class="wf-componentview">
+                                                        <div class="wf-componentview-border"><label
+                                                            class="wf-componentview-label">{{itemInTable.defaultLable}}</label><span
+                                                            class="wf-componentview-placeholder">{{itemInTable.defaultProps}}<span
+                                                            v-if="itemInTable.defaultImportant">（必填）</span></span></div>
+                                                    </div>
+                                                </div>
+                                                <div class="wf-dragging-mark" v-if="item.InTableCanvas==idx+1"></div>
+                                            </div>
+                                            <div v-if="itemInTable.componentName=='ddselectfield'">
+                                                <div @mousedown="mouseDown" draggable="true" v-on:dragstart="movestart"
+                                                     v-on:mouseover="hover"
+                                                     v-on:mouseout="mouseOut"
+                                                     :data-index="idx"
+                                                     v-bind:class="idx==item.selected?'active':''"
+                                                     class="wf-component wf-component-ddselectfield">
+                                                    <div class="wf-remove icon icon-close" @click="close"></div>
+                                                    <div class="wf-overlay"></div>
+                                                    <div class="wf-componentview">
+                                                        <div class="wf-componentview-border"><label
+                                                            class="wf-componentview-label">{{itemInTable.defaultLable}}</label><span
+                                                            class="wf-componentview-placeholder">{{itemInTable.defaultProps}}<span
+                                                            v-if="itemInTable.defaultImportant">（必填）</span></span>
+                                                            <i class="icon icon-enter"></i>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="wf-dragging-mark" v-if="item.InTableCanvas==idx+1"></div>
+                                            </div>
+                                            <div v-if="itemInTable.componentName=='ddmultiselectfield'">
+                                                <div @mousedown="mouseDown" draggable="true" v-on:dragstart="movestart"
+                                                     v-on:mouseout="mouseOut"
+                                                     v-on:mouseover="hover"
+                                                     :data-index="idx"
+                                                     v-bind:class="idx==item.selected?'active':''"
+                                                     class="wf-component wf-component-ddmultiselectfield">
+                                                    <div class="wf-remove icon icon-close" @click="close"></div>
+                                                    <div class="wf-overlay"></div>
+                                                    <div class="wf-componentview">
+                                                        <div class="wf-componentview-border"><label
+                                                            class="wf-componentview-label">{{itemInTable.defaultLable}}</label><span
+                                                            class="wf-componentview-placeholder">{{itemInTable.defaultProps}}<span
+                                                            v-if="itemInTable.defaultImportant">（必填）</span></span>
+                                                            <i class="icon icon-enter"></i>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="wf-dragging-mark" v-if="item.InTableCanvas==idx+1"></div>
+                                            </div>
+                                            <div v-if="itemInTable.componentName=='dddatefield'">
+                                                <div @mousedown="mouseDown" draggable="true" v-on:dragstart="movestart"
+                                                     v-on:mouseout="mouseOut"
+                                                     v-on:mouseover="hover"
+                                                     :data-index="idx"
+                                                     v-bind:class="idx==item.selected?'active':''"
+                                                     class="wf-component wf-component-dddatefield">
+                                                    <div class="wf-remove icon icon-close" @click="close"></div>
+                                                    <div class="wf-overlay"></div>
+                                                    <div class="wf-componentview">
+                                                        <div class="wf-componentview-border"><label
+                                                            class="wf-componentview-label">{{itemInTable.defaultLable}}</label><span
+                                                            class="wf-componentview-placeholder">{{itemInTable.defaultProps}}<span
+                                                            v-if="itemInTable.defaultImportant">（必填）</span></span>
+                                                            <i class="icon icon-enter"></i>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="wf-dragging-mark" v-if="item.InTableCanvas==idx+1"></div>
+                                            </div>
+                                            <div v-if="itemInTable.componentName=='dddaterangefield'">
+                                                <div @mousedown="mouseDown" draggable="true" v-on:dragstart="movestart"
+                                                     v-on:mouseout="mouseOut"
+                                                     v-on:mouseover="hover"
+                                                     :data-index="idx"
+                                                     v-bind:class="idx==item.selected?'active':''"
+                                                     class="wf-component wf-component-dddaterangefield">
+                                                    <div class="wf-remove icon icon-close" @click="close"></div>
+                                                    <div class="wf-overlay"></div>
+                                                    <div class="wf-componentview">
+                                                        <div class="wf-componentview-border"><label
+                                                            class="wf-componentview-label">{{itemInTable.defaultLable}}</label><span
+                                                            class="wf-componentview-placeholder">{{itemInTable.defaultProps}}<span
+                                                            v-if="itemInTable.defaultImportant">（必填）</span></span>
+                                                            <i class="icon icon-enter"></i>
+                                                        </div>
+                                                        <div class="wf-componentview-border"><label
+                                                            class="wf-componentview-label">{{itemInTable.defaultLable2}}</label><span
+                                                            class="wf-componentview-placeholder">{{itemInTable.defaultProps2}}<span
+                                                            v-if="itemInTable.defaultImportant">（必填）</span></span>
+                                                            <i class="icon icon-enter"></i>
+                                                        </div>
+                                                        <div class="wf-componentview-border"
+                                                             v-if="itemInTable.defaultAutorekonTime"><label
+                                                            class="wf-componentview-label"><span>{{itemInTable.defaultSubtitle}}</span><span
+                                                        >（天）</span></label><span
+                                                            class="wf-componentview-placeholder"></span></div>
+                                                        <span></span>
+                                                    </div>
+                                                </div>
+                                                <div class="wf-dragging-mark" v-if="item.InTableCanvas==idx+1"></div>
+                                            </div>
+                                            <div v-if="itemInTable.componentName=='ddphotofield'">
+                                                <div @mousedown="mouseDown" draggable="true" v-on:dragstart="movestart"
+                                                     v-on:mouseout="mouseOut"
+                                                     v-on:mouseover="hover"
+                                                     :data-index="idx"
+                                                     v-bind:class="idx==item.selected?'active':''"
+                                                     class="wf-component wf-component-ddphotofield">
+                                                    <div class="wf-remove icon icon-close" @click="close"></div>
+                                                    <div class="wf-overlay"></div>
+                                                    <div class="wf-componentview">
+                                                        <div class="wf-componentview-border"><label
+                                                            class="wf-componentview-label">{{itemInTable.defaultLable}}</label><span
+                                                            class="wf-componentview-placeholder">{{itemInTable.defaultProps}}<span
+                                                            v-if="itemInTable.defaultImportant">（必填）</span></span>
+                                                            <i class="icon icon-camera"></i>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="wf-dragging-mark" v-if="item.InTableCanvas==idx+1"></div>
+                                            </div>
+                                            <div v-if="itemInTable.componentName=='textnote'">
+                                                <div @mousedown="mouseDown" draggable="true" v-on:dragstart="movestart"
+                                                     v-on:mouseout="mouseOut"
+                                                     v-on:mouseover="hover"
+                                                     :data-index="idx"
+                                                     v-bind:class="idx==item.selected?'active':''"
+                                                     class="wf-component wf-component-textnote">
+                                                    <div class="wf-remove icon icon-close" @click="close"></div>
+                                                    <div class="wf-overlay"></div>
+                                                    <div class="wf-componentview">
+                                                        <div class="wf-componentview-content">
+                                                            {{item.defaultProps}}<span
+                                                            v-if="itemInTable.defaultImportant">（必填）</span>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="wf-dragging-mark" v-if="item.InTableCanvas==idx+1"></div>
+                                            </div>
+                                            <div v-if="itemInTable.componentName=='moneyfield'">
+                                                <div @mousedown="mouseDown" draggable="true" v-on:dragstart="movestart"
+                                                     v-on:mouseout="mouseOut"
+                                                     v-on:mouseover="hover"
+                                                     :data-index="idx"
+                                                     v-bind:class="idx==item.selected?'active':''"
+                                                     class="wf-component wf-component-moneyfield">
+                                                    <div class="wf-remove icon icon-close" @click="close"></div>
+                                                    <div class="wf-overlay"></div>
+                                                    <div class="wf-componentview">
+                                                        <div class="wf-componentview-border"><label
+                                                            class="wf-componentview-label">{{itemInTable.defaultLable}}</label><span
+                                                            class="wf-componentview-placeholder">{{itemInTable.defaultProps}}<span
+                                                            v-if="itemInTable.defaultImportant">（必填）</span></span>
+                                                        </div>
+                                                        <div class="cnformat" v-if="itemInTable.defaultTranslate">
+                                                            大写：壹万元整（示例）
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="wf-dragging-mark" v-if="item.InTableCanvas==idx+1"></div>
+                                            </div>
+                                            <div v-if="itemInTable.componentName=='ddattachment'">
+                                                <div @mousedown="mouseDown" draggable="true" v-on:dragstart="movestart"
+                                                     v-on:mouseout="mouseOut"
+                                                     v-on:mouseover="hover"
+                                                     :data-index="idx"
+                                                     v-bind:class="idx==item.selected?'active':''"
+                                                     class="wf-component wf-component-ddattachment">
+                                                    <div class="wf-remove icon icon-close" @click="close"></div>
+                                                    <div class="wf-overlay"></div>
+                                                    <div class="wf-componentview">
+                                                        <div class="wf-componentview-border"><label
+                                                            class="wf-componentview-label">{{itemInTable.defaultLable}}</label><span
+                                                            class="wf-componentview-placeholder">{{itemInTable.defaultProps}}<span
+                                                            v-if="itemInTable.defaultImportant">（必填）</span></span>
+                                                        </div>
+                                                        <i class="icon icon-chakanfujian"></i>
+                                                    </div>
+                                                </div>
+                                                <div class="wf-dragging-mark" v-if="item.InTableCanvas==idx+1"></div>
+                                            </div>
+                                            <div v-if="itemInTable.componentName=='externalcontactfield'">
+                                                <div @mousedown="mouseDown" draggable="true" v-on:dragstart="movestart"
+                                                     v-on:mouseout="mouseOut"
+                                                     v-on:mouseover="hover"
+                                                     :data-index="idx"
+                                                     v-bind:class="idx==item.selected?'active':''"
+                                                     class="wf-component wf-component-externalcontactfield">
+                                                    <div class="wf-remove icon icon-close" @click="close"></div>
+                                                    <div class="wf-overlay"></div>
+                                                    <div class="wf-componentview">
+                                                        <div class="wf-componentview-border"><label
+                                                            class="wf-componentview-label">{{itemInTable.defaultLable}}</label><span
+                                                            class="wf-componentview-placeholder">{{itemInTable.defaultProps}}<span
+                                                            v-if="itemInTable.defaultImportant">（必填）</span></span>
+                                                        </div>
+                                                        <i class="icon icon-enter"></i>
+                                                    </div>
+                                                </div>
+                                                <div class="wf-dragging-mark" v-if="item.InTableCanvas==idx+1"></div>
+                                            </div>
+                                        </div>
                                     </div>
                                 </div>
                                 <div class="wf-componentview-adddetail">
@@ -273,7 +522,6 @@
                         <div class="wf-dragging-mark" v-if="InCanvas==index+1"></div>
                     </div>
                 </div>
-
             </div>
         </div>
     </div>
@@ -297,7 +545,7 @@
                 domArr: [],
                 isDrag: false,
                 dragIndex: null,
-                InTabCanvas: false
+                tabIndex: null
             }
         },
         /* components: {
@@ -373,25 +621,90 @@
         created: function () {
             let self = this
             drag.$on("moveInCanvas", function (obj) {
+                //当鼠标在中间可拖动区域
                 if (obj.clientX >= self.left && obj.clientY >= self.top && obj.clientX <= self.left + self.width && obj.clientY <= self.top + self.height) {
-                    let topInCanvas = obj.clientY - self.top
-                    if (self.domArr.length > 0 && topInCanvas >= self.domArr[0].middle) {
-                        self.InCanvas = 1
-                    } else if (self.domArr.length > 0 && topInCanvas < self.domArr[0].middle) {
-                        self.InCanvas = 0
-                    }
-                    for (let i = 0, l = self.domArr.length; i < l - 1; i++) {
-                        var item = self.domArr[i];
-                        var nextItem = self.domArr[i + 1];
-                        if (topInCanvas > item.middle && topInCanvas < nextItem.middle) {
-                            self.InCanvas = i + 1
-                        } else if (topInCanvas >= nextItem.middle) {
-                            self.InCanvas = i + 2
+                    //鼠标距离可拖动区域顶部的距离
+                    let topInCanvas = obj.clientY - self.top;
+                    if (self.domArr.length <= 0) {
+                        self.InCanvas = 0;
+                        self.tabIndex = null;
+                    } else if (self.domArr.length === 1) {
+                        if (topInCanvas <= self.domArr[0].middle_top) {
+                            self.InCanvas = 0;
+                            self.tabIndex = null;
+                        } else if (topInCanvas > self.domArr[0].middle_lower) {
+                            self.InCanvas = 1;
+                            self.tabIndex = null;
+                        } else if (topInCanvas <= self.domArr[0].middle_lower && topInCanvas > self.domArr[0].middle_top) {
+                            let item = self.domArr[0];
+                            self.InCanvas = null;
+                            self.tabIndex = 0;
+                            if (item.domArr.length <= 0) {
+                                self.components[0].InTableCanvas = 0
+                            } else if (topInCanvas > item.domArr[item.domArr.length - 1].middle_lower) {
+                                self.components[0].InTableCanvas = item.domArr.length
+                            } else if (item.domArr.length > 1) {
+                                for (let m = 0, n = item.domArr.length - 1; m < n; m++) {
+                                    if (topInCanvas > item.domArr[m].middle_lower && topInCanvas <= item.domArr[m + 1].middle_top) {
+                                        self.components[0].InTableCanvas = m + 1
+                                    }
+                                }
+                            }
+                        }
+                    } else
+                    //中间已有组件数量大于1
+                    {
+                        if (topInCanvas <= self.domArr[0].middle_top) {
+                            self.InCanvas = 0;
+                            self.tabIndex = null;
+                        } else if (topInCanvas > self.domArr[self.domArr.length - 1].middle_lower) {
+                            self.InCanvas = self.domArr.length;
+                            self.tabIndex = null;
+                        }
+                        else {
+                            for (let i = 0, l = self.domArr.length; i < l - 1; i++) {
+                                let item = self.domArr[i];
+                                let nextItem = self.domArr[i + 1];
+                                //在明细组件里面
+                                if (topInCanvas > item.middle_top && topInCanvas <= item.middle_lower) {
+                                    self.InCanvas = null;
+                                    self.tabIndex = i;
+                                    if (item.domArr.length <= 0) {
+                                        self.components[i].InTableCanvas = 0
+                                    } else if (topInCanvas > item.domArr[item.domArr.length - 1].middle_lower) {
+                                        self.components[i].InTableCanvas = item.domArr.length
+                                    } else {
+                                        for (let m = 0, n = item.domArr.length - 1; m < n; m++) {
+                                            if (topInCanvas > item.domArr[m].middle_lower && topInCanvas <= item.domArr[m + 1].middle_top) {
+                                                self.components[i].InTableCanvas = m + 1
+                                            }
+                                        }
+                                    }
+                                } else if (topInCanvas > item.middle_lower && topInCanvas <= nextItem.middle_top) {
+                                    self.InCanvas = i + 1;
+                                    self.tabIndex = null;
+                                    self.components[i].InTableCanvas = null
+                                }
+
+                            }
                         }
                     }
-                    self.InCanvas = self.InCanvas || 0
+
+                    if (self.tabIndex != null) {
+                        self.InCanvas = null
+                    } else {
+                        self.InCanvas = self.InCanvas || 0
+                    }
+                    if (self.InCanvas != null) {
+                        for (let i = 0, l = self.components.length; i < l; i++) {
+                            self.components[i].InTableCanvas = null
+                        }
+                    }
                 } else {
                     self.InCanvas = null;
+                    for (let i = 0, l = self.components.length; i < l; i++) {
+                        self.components[i].InTableCanvas = null
+                    }
                 }
             })
             drag.$on("moveend", function (obj) {
@@ -399,28 +712,25 @@
                 component = JSON.parse(component);
                 drag.$emit("dragend", obj);
                 if (self.InCanvas !== null) {
+                    //拖动现在已有组件
                     if (self.isDrag) {
-                        self.dragIndex = self.dragIndex >> 0
+                        self.dragIndex = self.dragIndex >> 0;
                         if (self.dragIndex != self.InCanvas - 1 && self.dragIndex != self.InCanvas) {
-                            let dragItem = self.components[self.dragIndex]
-                            self.components.splice(self.dragIndex, 1)
-                            self.components.splice(self.InCanvas, 0, dragItem)
-                            self.selected = self.components.indexOf(dragItem)
+                            let dragItem = self.components[self.dragIndex];
+                            self.components.splice(self.dragIndex, 1);
+                            self.components.splice(self.InCanvas, 0, dragItem);
+                            self.selected = self.components.indexOf(dragItem);
                         } else {
                             let dom = self.queryDomByIndex(self.dragIndex);
-                            dom.classList.remove('draging')
-                            //    document.querySelector('*[data-index=' + self.dragIndex + ']').classList.remove('draging')
+                            dom.classList.remove('draging');
                         }
-                        /* let components = document.querySelectorAll('wf-component')
-                         for (let i = 0, l = components.length; i < l; i++) {
-                         components[i].classList.remove('draging')
-                         }*/
-                        self.dragIndex = null
-                        self.isDrag = false
+                        self.dragIndex = null;
+                        self.isDrag = false;
                     } else {
+                        //添加新组件
                         let idx = 0;
                         for (let i = 0; i < self.components.length; i++) {
-                            let item = self.components[i]
+                            let item = self.components[i];
                             if (item.name == component.componentView.name) {
                                 idx++;
                             }
@@ -430,18 +740,41 @@
                             component.componentView.defaultLable = component.componentView.defaultLable + "（" + idx + "）";
                         }
                         if (self.InCanvas > 0) {
-                            self.components.splice(self.InCanvas, 0, component.componentView)
+                            self.components.splice(self.InCanvas, 0, component.componentView);
                         } else if (self.InCanvas == 0) {
-                            self.components.unshift(component.componentView)
+                            self.components.unshift(component.componentView);
                         }
                         self.selected = self.components.indexOf(component.componentView);
-                        drag.$emit('changeTab', true)
+                        drag.$emit('changeTab', true);
                         drag.$emit("selectComponent", component.componentView)
                     }
-                    self.InCanvas = null
+                    self.InCanvas = null;
+                } else {
+
+                    //添加新组件
+                    let idx = 0;
+                    for (let i = 0; i < self.components[self.tabIndex].components.length; i++) {
+                        let item = self.components[self.tabIndex].components[i];
+                        if (item.name == component.componentView.name) {
+                            idx++;
+                        }
+                    }
+                    component.componentView.idx =  self.components[self.tabIndex].components.length;
+                    if (idx > 0) {
+                        component.componentView.defaultLable = component.componentView.defaultLable + "（" + idx + "）";
+                    }
+                    if (self.components.InTableCanvas > 0) {
+                        self.components[self.tabIndex].components.splice(self.tabIndex, 0, component.componentView);
+                    } else if (self.components.InTableCanvas == 0) {
+                        self.components[self.tabIndex].components.unshift(component.componentView);
+                    }
+                    //self.selected = self.components.indexOf(component.componentView);
+                    for (let i = 0, l = self.components.length; i < l; i++) {
+                        self.components[i].InTableCanvas = null;
+                    }
+                    drag.$emit('changeTab', true);
+                    drag.$emit("selectComponent", component.componentView)
                 }
-
-
                 if (self.components.length <= 0) {
                     self.isempty = true
                 } else {
@@ -482,15 +815,34 @@
             let domArr = document.querySelectorAll('.wf-component')
             for (let i = 0, l = domArr.length; i < l; i++) {
                 let obj = domArr[i];
-                this.domArr.push({
-                    height: obj.offsetHeight,
-                    middle: (obj.offsetTop + obj.offsetHeight / 2) >> 0,
-                    top: obj.offsetTop
-                })
-                /*
-                 obj.classList.remove('draging')
-                 */
-                //
+                if (obj.className.indexOf('wf-component-tablefield') >= 0) {
+                    let middleDomArr = [];
+                    let objTop = obj.offsetTop;
+                    let middleDom = obj.querySelectorAll('.wf-component')
+                    for (let m = 0, n = middleDom.length; m < n; m++) {
+                        let item = middleDom[m];
+                        middleDomArr.push({
+                            height: item.offsetHeight,
+                            middle: (item.offsetTop + item.offsetHeight / 2) >> 0,
+                            top: item.offsetTop + objTop
+                        })
+                    }
+                    this.domArr.push({
+                        height: obj.offsetHeight,
+                        middle_top: (obj.offsetTop + 18) >> 0,
+                        middle_lower: (obj.offsetTop + obj.offsetHeight - 23) >> 0,
+                        top: objTop,
+                        domArr: middleDomArr
+                    })
+                } else {
+                    this.domArr.push({
+                        height: obj.offsetHeight,
+                        middle_top: (obj.offsetTop + obj.offsetHeight / 2) >> 0,
+                        middle_lower: (obj.offsetTop + obj.offsetHeight / 2) >> 0,
+                        top: obj.offsetTop
+                    })
+                }
+
             }
         }
     }

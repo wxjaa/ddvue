@@ -36,7 +36,12 @@
             move: function (e) {
                 if (this.isstart) {
                     document.querySelector('html').classList.add('wf-cursor-move')
-                    drag.$emit("moveInCanvas", e)
+                    let obj = {
+                        componentName: this.componentView.componentName,
+                        clientX: e.clientX,
+                        clientY: e.clientY
+                    }
+                    drag.$emit("moveInCanvas", obj)
                     drag.$emit('move', e)
                 }
             },

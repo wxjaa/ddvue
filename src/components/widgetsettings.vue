@@ -161,7 +161,7 @@
         <div v-if="supportSetting.print" class="wf-field wf-setting-print">
             <div class="fieldname">打印</div>
             <label class="fieldblock">
-                <input type="checkbox" value="1" checked>
+                <input type="checkbox"  @change="changeComponent" value="1" v-model="supportSetting.defaultPrint">
                 <span class="verticalmiddle">参与打印</span>
                 <span class="verticalmiddle">（如不勾选打印时，不显示此项）</span>
             </label>

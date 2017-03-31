@@ -28,6 +28,7 @@
                         defaultLable: '单行输入框',
                         defaultProps: '请输入',
                         defaultImportant: false,
+                        defaultPrint: false,
                         componentName: 'textfield',
                         supportSetting: ['label', 'placeholder', 'required', 'important', 'print']
                     },
@@ -36,6 +37,7 @@
                         defaultLable: '多行输入框',
                         defaultProps: '请输入',
                         defaultImportant: false,
+                        defaultPrint: false,
                         componentName: 'textareafield',
                         supportSetting: ['label', 'placeholder', 'required', 'important', 'print']
                     },
@@ -44,6 +46,7 @@
                         defaultLable: '数字输入框',
                         defaultProps: '请输入',
                         defaultImportant: false,
+                        defaultPrint: false,
                         componentName: 'numberfield',
                         supportSetting: ['label', 'placeholder', 'required', 'important', 'print', 'uint']
                     },
@@ -53,6 +56,7 @@
                         defaultProps: '请选择',
                         defaultImportant: false,
                         defaultSync: false,
+                        defaultPrint: false,
                         defaultOptions: [
                             {idx: 1, text: '选项1'},
                             {idx: 2, 'text': '选项2'},
@@ -66,6 +70,7 @@
                         defaultLable: '多选框',
                         defaultProps: '请选择',
                         defaultImportant: false,
+                        defaultPrint: false,
                         defaultOptions: [
                             {idx: 1, text: '选项1'},
                             {idx: 2, 'text': '选项2'},
@@ -79,6 +84,7 @@
                         defaultLable: '日期',
                         defaultProps: '请选择',
                         defaultImportant: false,
+                        defaultPrint: false,
                         defaultFormat: 'yyyy-MM-dd',
                         componentName: 'dddatefield',
                         supportSetting: ['label', 'placeholder', 'dateformat', 'required', 'important', 'print']
@@ -90,6 +96,7 @@
                         defaultProps: '请选择',
                         defaultProps2: '请选择',
                         defaultImportant: false,
+                        defaultPrint: false,
                         defaultAutorekonTime: false,
                         defaultFormat: 'yyyy-MM-dd',
                         defaultSubtitle: '时长',
@@ -110,6 +117,7 @@
                         name: '图片',
                         defaultLable: '图片',
                         defaultImportant: false,
+                        defaultPrint: false,
                         componentName: 'ddphotofield',
                         supportSetting: ['label', 'required', 'important', 'print']
                     },
@@ -119,6 +127,7 @@
                         defaultAction: '增加明细',
                         components: [],
                         selected:null,
+                        defaultPrint: false,
                         InTableCanvas:null,
                         componentName: 'tablefield',
                         supportSetting: ['label', 'action', 'required']
@@ -129,6 +138,7 @@
                         defaultImportant: false,
                         defaultProps: '请输入说明文字',
                         defaultShow: false,
+                        defaultPrint: false,
                         defaultHref: '',
                         componentName: 'textnote',
                         supportSetting: ['textnote', 'required', 'href', 'print', 'show', 'important']
@@ -139,6 +149,7 @@
                         defaultProps: '请输入',
                         defaultImportant: false,
                         defaultTranslate: false,
+                        defaultPrint: false,
                         componentName: 'moneyfield',
                         supportSetting: ['label', 'placeholder', 'translate', 'required', 'important', 'print']
                     },
@@ -146,6 +157,7 @@
                         name: '附件',
                         defaultLable: '附件',
                         defaultImportant: false,
+                        defaultPrint: false,
                         componentName: 'ddattachment',
                         supportSetting: ['label', 'required', 'important', 'print']
                     },
@@ -153,6 +165,7 @@
                         name: '外部联系人',
                         defaultLable: '外部联系人',
                         defaultProps: '请选择',
+                        defaultPrint: false,
                         defaultImportant: false,
                         componentName: 'externalcontactfield',
                         supportSetting: ['label', 'placeholder', 'required', 'important', 'print']

@@ -6,7 +6,7 @@
                 <span class="fieldinfo">最多10个字</span>
             </div>
             <div class="fieldblock">
-                <input type="text" @input="changeInfo" v-model="title">
+                <input type="text" @input="changeInfo" maxlength="10" v-model="title">
             </div>
         </div>
         <div class="wf-field wf-setting-description">
@@ -15,7 +15,7 @@
                 <span class="fieldinfo">最多100个字</span>
             </div>
             <div class="fieldblock">
-                <textarea type="text" @input="changeInfo" v-model="description"></textarea>
+                <textarea type="text" @input="changeInfo" maxlength="100" v-model="description"></textarea>
             </div>
         </div>
         <div class="wf-field wf-setting-icon">

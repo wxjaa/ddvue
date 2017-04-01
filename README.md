@@ -1,7 +1,6 @@
 # ddvue
 
-> A Vue.js project
-
+> 用vue仿照钉钉的审批设计器 [实例](https://wxjaa.github.io/dingding/)
 ## Build Setup
 
 ``` bash
@@ -17,6 +16,8 @@ npm run build
 # build for production and view the bundle analyzer report
 npm run build --report
 ```
+#目前问题
 
-For detailed explanation on how things work, checkout the [guide](http://vuejs-templates.github.io/webpack/) and [docs for vue-loader](http://vuejs.github.io/vue-loader).
-"# ddvue" 
+webpack打包图片路径还有问题
+
+目前只出来了效果 还有很多验证没做

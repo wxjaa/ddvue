@@ -16,8 +16,3 @@ npm run build
 # build for production and view the bundle analyzer report
 npm run build --report
 ```
-#目前问题
-
-webpack打包图片路径还有问题
-
-目前只出来了效果 还有很多验证没做
